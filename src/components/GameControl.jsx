@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Board from './Board';
 import Stats from './Stats';
+import Header from './Header';
 
 const EmojiList = [
    ' 🍗',
@@ -53,6 +54,9 @@ export default class GameControl extends Component {
     render() {
         return (
             <div>
+                <div className="general">
+                    <Header />
+                </div>
                 <Board boardList={this.state.randoList}/>
                 <Stats/>
             </div>

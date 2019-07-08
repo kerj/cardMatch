@@ -13,9 +13,12 @@ const styles = makeStyles({
         height: '75%',
         gridGap: '3em',
         width: '75%',
-        margin: '200px',
+        alignItems: 'center',
+        margin: '150px',
         padding: '20px',
-        border: '3px solid black'
+        border: '3px solid black',
+        borderRadius: '15px',
+        backgroundImage: 'linear-gradient(to bottom right, turquoise, purple)'
     }
 })
 
