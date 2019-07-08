@@ -22,20 +22,22 @@ export default class GameControl extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            clickable: true,
             checkList: [''],
             matchedList: [''],
             randoList: this.randomize(EmojiList.concat(EmojiList))
         };
         console.log(this.state);
         console.log(this.state.randoList);
+        this.handleSelection = this.handleSelection.bind(this);
     }
 
-    handleClick(emoji) {
+    handleSelection(index) {
+        console.log(index)
         if (this.state.checkList.Length === 0) {
-            this.state.checkList.push(emoji)
+            this.state.checkList.push(index)
         } else {
-            this.state.checkList.push(emoji)
-            
+            this.state.checkList.push(index)
         }
         // this.setState({});
     }
@@ -57,7 +59,7 @@ export default class GameControl extends Component {
                 <div className="general">
                     <Header />
                 </div>
-                <Board boardList={this.state.randoList}/>
+                <Board onSelection={this.handleSelection} boardList={this.state.randoList}/>
                 <Stats/>
             </div>
         )

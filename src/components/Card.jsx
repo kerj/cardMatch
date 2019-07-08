@@ -7,22 +7,26 @@ const styles = makeStyles({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100px',
-        fontSize: '40px',
+        height: '120px',
+        fontSize: '60px',
         border: '3px solid black',
         backgroundImage: 'linear-gradient(orange, hotpink)'
+    },
+    emoji: {
+        display: 'none'
     }
 })
 
 export default function Card(props) {
+  
     const classes = styles();
     return (
         <div className={classes.card}>
-            <div>{props.emoji}</div>
+            <div className={classes.emoji}>{props.emoji}</div>
         </div>
     )
 }
 
 Card.propTypes = {
-    emoji: PropTypes.string.isRequired
+    emoji: PropTypes.string.isRequired,
 }

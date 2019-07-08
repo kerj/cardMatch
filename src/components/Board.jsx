@@ -23,18 +23,23 @@ const styles = makeStyles({
 })
 
 export default function Board(props) {
+    
     const classes = styles();
     return (
         <div className={classes.board}>
-            {props.boardList.map((card, index) =>
-                <Card emoji={card}
-                key={index}/>
-            )}
+        {props.boardList.map((card, index) => 
+                <div onClick={() => props.onSelection(card)} key={index}>
+                    <Card emoji={card}
+                    />
+                </div>
+            )}   
         </div>
     )
 }
 
 Board.propTypes = {
-    boardList: PropTypes.array
+    boardList: PropTypes.array,
+    onSelection: PropTypes.func
+
 };
  
