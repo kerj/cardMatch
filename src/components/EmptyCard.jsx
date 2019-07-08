@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core';
 
 const styles = makeStyles({
@@ -14,16 +13,11 @@ const styles = makeStyles({
     }
 })
 
-export default function Card(props) {
+export default function EmptyCard() {
   
     const classes = styles();
     return (
         <div className={classes.card}>
-            <div>{props.emoji}</div>
         </div>
     )
-}
-
-Card.propTypes = {
-    emoji: PropTypes.string.isRequired,
 }

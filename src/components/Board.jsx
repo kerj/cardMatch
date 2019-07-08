@@ -4,6 +4,7 @@ import './Board.css';
 import { makeStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import Card from './Card';
+import EmptyCard from './EmptyCard';
 
 const styles = makeStyles({
     board:{
@@ -23,14 +24,15 @@ const styles = makeStyles({
 })
 
 export default function Board(props) {
-    
     const classes = styles();
+
     return (
         <div className={classes.board}>
         {props.boardList.map((card, index) => 
-                <div onClick={() => props.onSelection(card)} key={index}>
-                    <Card emoji={card}
-                    />
+                <div onClick={() => props.onSelection(index)} key={index}>
+
+                        <Card emoji ={(props.checkList.includes(index)|| props.matchedList.includes(index) ? card : ' ')}
+                        />
                 </div>
             )}   
         </div>
@@ -39,7 +41,8 @@ export default function Board(props) {
 
 Board.propTypes = {
     boardList: PropTypes.array,
-    onSelection: PropTypes.func
-
+    onSelection: PropTypes.func,
+    checkList: PropTypes.array,
+    matchedList: PropTypes.array
 };
  

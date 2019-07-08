@@ -23,23 +23,41 @@ export default class GameControl extends Component {
         super(props);
         this.state = {
             clickable: true,
-            checkList: [''],
-            matchedList: [''],
+            checkList: [],
+            matchedList: [],
             randoList: this.randomize(EmojiList.concat(EmojiList))
         };
-        console.log(this.state);
-        console.log(this.state.randoList);
         this.handleSelection = this.handleSelection.bind(this);
     }
 
-    handleSelection(index) {
-        console.log(index)
-        if (this.state.checkList.Length === 0) {
-            this.state.checkList.push(index)
+    handleSelection(emoji) {
+        if (this.state.checkList.includes(emoji) === false && this.state.matchedList.includes(emoji) === false && this.state.clickable === true){
+            this.state.checkList.push(emoji)
+            this.setState(this.state.checkList);
+            if (this.state.checkList.length === 1) {
+                
+            } else {
+                if (this.state.randoList[this.state.checkList[0]] === this.state.randoList[emoji]) {
+                    this.state.checkList.forEach((el)=>this.state.matchedList.push(el))
+                    this.setState(this.state.matchedList);
+                    this.setState(this.state.checkList);
+                    this.state.checkList = [];
+
+                } else {
+                    this.state.clickable = false;
+                    setTimeout(()=>{
+                    this.state.checkList = []
+                    this.setState(this.state.checkList)
+                    this.state.clickable = true;
+                    }, 1000)
+                    
+                }
+               
+            }
+            
         } else {
-            this.state.checkList.push(index)
+            console.log('already picked')
         }
-        // this.setState({});
     }
 
     randomize(a) {
@@ -59,7 +77,7 @@ export default class GameControl extends Component {
                 <div className="general">
                     <Header />
                 </div>
-                <Board onSelection={this.handleSelection} boardList={this.state.randoList}/>
+                <Board onSelection={this.handleSelection} boardList={this.state.randoList} checkList={this.state.checkList} matchedList={this.state.matchedList}/>
                 <Stats/>
             </div>
         )
