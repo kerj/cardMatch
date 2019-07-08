@@ -3,29 +3,46 @@ import Board from './Board';
 import Stats from './Stats';
 import Header from './Header';
 
-const EmojiList = [
-   ' 🍗',
-    '💯',
-    '♿',
-    '♏',
-    '👽',
-    '🔱',
-    '🐊',
-    '🔨',
-    '🕐',
-    '🕚'
-]
+const EmojiList = {
+    easy: [
+        ' 🍗',
+        '💯',
+        '♿',
+        '♏',
+        '👽',
+        '🔱',
+        '🐊',
+        '🔨',
+        '🕐',
+        '🕚'
+    ],
+    hard: [
+        '🕜',
+        '🕝',
+        '🕞',
+        '🕟',
+        '🕠',
+        '🕡',
+        '⏰',
+        '⚪',
+        '💿',
+        '⚾'
+    ]
+ 
+}
 
 
 export default class GameControl extends Component {
   
     constructor(props) {
+        let loc = window.location.href.split("/")[5];
         super(props);
+        console.log(EmojiList[loc]);
         this.state = {
             clickable: true,
             checkList: [],
             matchedList: [],
-            randoList: this.randomize(EmojiList.concat(EmojiList))
+            randoList: this.randomize(EmojiList[loc].concat(EmojiList[loc]))
         };
         this.handleSelection = this.handleSelection.bind(this);
     }

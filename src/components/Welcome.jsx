@@ -25,7 +25,8 @@ export default function Welcome() {
                 <Header />
             </div>
             <div className="general">
-                <Link className={classes.link} to='/game'>Start New Game</Link>
+                <Link className={classes.link} to='/game/easy'>Easy Mode</Link> 
+                <Link className={classes.link} to='/game/hard'>Hard Mode</Link>
             </div>
         </div>
     )
